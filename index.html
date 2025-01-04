@@ -7,9 +7,28 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <video id="video" controls autoplay muted>
-        <source src="video.mp4" type="video/mp4">
+    <video id="video" autoplay muted>
+        <source src="URL_VIDEO_ANDA.mp4" type="video/mp4">
         Browser Anda tidak mendukung video tag.
     </video>
+
+    <script>
+        // Fungsi untuk masuk ke mode fullscreen
+        function goFullscreen() {
+            const video = document.getElementById('video');
+            if (video.requestFullscreen) {
+                video.requestFullscreen();
+            } else if (video.mozRequestFullScreen) { // Firefox
+                video.mozRequestFullScreen();
+            } else if (video.webkitRequestFullscreen) { // Chrome, Safari, and Opera
+                video.webkitRequestFullscreen();
+            } else if (video.msRequestFullscreen) { // IE/Edge
+                video.msRequestFullscreen();
+            }
+        }
+
+        // Masuk ke fullscreen setelah video dimuat
+        document.addEventListener('loadeddata', goFullscreen, false);
+    </script>
 </body>
 </html>
